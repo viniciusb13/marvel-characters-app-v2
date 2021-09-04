@@ -1,38 +1,124 @@
 .App {
-  text-align: center;
+	text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+	box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.header {
+	text-align: center;
+	margin: 15px;
+}
+
+/* CharacterList*/
+
+.list-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+}
+
+.list-title{
+	padding: 10px;
+	text-align: center;
+}
+
+.card {
+	position: relative;
+	width: 300px;
+	height: 450px;
+	margin: 10px auto;
+	margin-inline-end: 15px;
+	background: no-repeat;
+	background-size: cover;
+	border-radius: .5rem;
+	box-shadow: 2px -2px 10px 1px rgba(0, 0, 0, 0.3);
+
+	transition: all .3s;
+}
+
+
+.card h2{
+	margin: -0.9px;
+	width: 300px;
+	padding: 6px;
+	text-align: center;
+	background-color:rgba(255, 255, 255, 0.75);
+	position: absolute;
+	border-radius: 0 0 .5rem .30rem;
+	bottom: 0;
+	color: black;
+
+	transition: all .3s;
+
+}
+
+.card:hover{
+	width: 320px;
+	height: 470px;
+}
+
+.card:hover > h2{
+	width: 320px;
+}
+
+.pagination {
+	width: 500px;
+	display: flex;
+	margin: auto;
+	padding: 30px;
+	list-style: none;
+	justify-content: space-between;
+}
+
+.pagination a {
+	padding: 10px;
+	border-radius: 5px;
+	border: 1px solid #1a1c2b;
+ 	color: #1a1c2b;
+}
+
+.pagination__link--active a {
+	color: #fff;
+	background: #6874df;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  
+  .pagination__link--disabled a {
+	color: rgb(198, 197, 202);
+	border: 1px solid rgb(198, 197, 202);
   }
-  to {
-    transform: rotate(360deg);
-  }
+  
+
+
+/* CharacterPage*/
+
+.characterPage-container {
+	padding: 10px
+}
+
+.characterPage-container h1 {
+	padding: 5px;
+	margin-left: 30px;
+}
+
+.characterPage-container p {
+	padding: 5px 5px 0px 5px;
+	margin-left: 30px;
+
+}
+
+.nome-personagem {
+	text-align: center;
+}
+
+
+.list-item {
+	margin: 5px;
+	padding: 2px;
+	border: 1px solid grey;
+}
+
+.back-button {
+	color: black;
 }
