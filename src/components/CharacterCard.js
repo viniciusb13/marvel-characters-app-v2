@@ -1,7 +1,6 @@
 import React  from 'react'
 
 const CharacterCard = (props) => {
-	// const [character, setCharacter] = useState();
 
 	return (
 		<div

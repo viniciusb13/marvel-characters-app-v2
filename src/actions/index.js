@@ -53,3 +53,25 @@ export const GetCharacter = (id) => async dispatch => {
 		})
 	}
 }
+
+export const GetCharacterSearch = (searchTerm, page) => async dispatch => {
+	try {
+		dispatch({
+			type: 'CHARACTER_SEARCH_LOADING'
+		});
+
+		const limit = 20;
+		const offset = (page * limit) - limit;
+
+		const res = await axios.get(`https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${searchTerm}&limit=${limit}&offset=${offset}&ts=${timestamp}&apikey=${publicKey}&hash=${hash}`)
+
+		dispatch({
+			type: 'CHARACTER_SEARCH_SUCCESS',
+			payload: res.data.data
+		})
+	} catch (e) {
+		dispatch({
+			type: 'CHARACTER_SEARCH_FAIL'
+		})
+	}
+}

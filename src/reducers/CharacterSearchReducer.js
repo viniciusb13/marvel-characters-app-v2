@@ -5,21 +5,21 @@ const DefaultState = {
 	count: 0
 };
 
-const CharacterListReducer = (state = DefaultState, action) => {
+const CharacterSearchReducer = (state = DefaultState, action) => {
 	switch (action.type) {
-		case 'CHARACTER_LIST_LOADING':
+		case 'CHARACTER_SEARCH_LOADING':
 			return {
 				...state,
 				loading: true,
 				errorMsg: ""
 			};
-		case 'CHARACTER_LIST_FAIL':
+		case 'CHARACTER_SEARCH_FAIL':
 			return {
 				...state,
 				loading: false,
 				errorMsg: "Não foi possível encontrar nenhum personagem"
 			};
-		case 'CHARACTER_LIST_SUCCESS':
+		case 'CHARACTER_SEARCH_SUCCESS':
 			return {
 				...state,
 				loading: false,
@@ -32,4 +32,4 @@ const CharacterListReducer = (state = DefaultState, action) => {
 	}
 };
 
-export default CharacterListReducer;
+export default CharacterSearchReducer;

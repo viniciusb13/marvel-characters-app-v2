@@ -6,12 +6,12 @@ import { useParams, Link } from 'react-router-dom';
 
 const CharacterPage = () => {
 	const { characterId } = useParams();
-	const [characterState, setCharacterData] = useState(null);
-
+	const [characterState, setCharacterState] = useState(null);
+	
 	
 	const dispatch = useDispatch();
 	const characterSave = useSelector(state => state.Character, _.isEqual);
-
+	
 	
 	useEffect(() => {
 		const characterData = characterSave.data[characterId];
@@ -21,19 +21,20 @@ const CharacterPage = () => {
 			
 		} else {
 			
-			setCharacterData(characterSave.data[characterId].results[0])
+			setCharacterState(characterSave.data[characterId].results[0])
 		}
 		
 	}, [characterSave]);
 
-	
+	// handleEdit = () => {
+
+	// }
 	
 	const ShowData = () => {
 		let characterDescription = characterState.description;
 		let characterSeries = characterState.series;
 
 		if (!_.isEmpty(characterState)) {
-			// const characterData = characterState[characterId];
 
 			if (characterDescription === "") {
 				characterDescription = 'Descrição indisponível';
@@ -42,21 +43,30 @@ const CharacterPage = () => {
 			return (
 				<div className="characterPage-container">
 					<Link to={'/'} style={{textDecoration: "none"}}>
-						<p className="back-button">Voltar</p>
+						<button className="button back">Voltar</button>
 					</ Link>
-					<h1>{characterName}</h1>
-					<p>{characterDescription}</p>
+					<button className="button edit">Editar</button>
+					<div className="characterStats">
+						<div className="characterThumb">
+							<img
+								src={`${characterThumb.path}/standard_fantastic.${characterThumb.extension}`}
+								alt="Foto do personagem"
+								width="420px"/>
+						</div>
+						<div className="characterInfo">
+							<h1>{characterName}</h1>
+							<p>{characterDescription}</p>
+						</div>
+					</div>
 					<div>
-						<h2 className="nome-personagem">Séries</h2>
-						<ul>
-							{characterSeries.items.map(item => {
-								return (
-									<li
-										key={item.resourceURI}
-										className="list-item">{item.name}</li>
-								)
-							})}
-						</ul>
+						<div className="series-container">
+							<h2>Séries</h2>
+							<ul>
+								{characterSeries.items.map(item => {
+									return <li key={item.resourceURI}>{item.name}</li>
+								})}
+							</ul>
+						</div>
 					</div>
 				</div>
 			)
@@ -76,6 +86,8 @@ const CharacterPage = () => {
 	}
 
 	const characterName = characterState.name;
+	const characterThumb = characterState.thumbnail;
+
 
 	
 
