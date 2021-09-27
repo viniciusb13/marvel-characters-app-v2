@@ -25,10 +25,6 @@ const CharacterPage = () => {
 		}
 		
 	}, [characterSave]);
-
-	// handleEdit = () => {
-
-	// }
 	
 	const ShowData = () => {
 		let characterDescription = characterState.description;
@@ -45,7 +41,6 @@ const CharacterPage = () => {
 					<Link to={'/'} style={{textDecoration: "none"}}>
 						<button className="button back">Voltar</button>
 					</ Link>
-					<button className="button edit">Editar</button>
 					<div className="characterStats">
 						<div className="characterThumb">
 							<img
@@ -87,8 +82,6 @@ const CharacterPage = () => {
 
 	const characterName = characterState.name;
 	const characterThumb = characterState.thumbnail;
-
-
 	
 
 	return (
